@@ -40,8 +40,7 @@ button, input { font: inherit; color: inherit; }
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; gap: 24px;
   padding: 12px max(16px, calc(50% - 560px));
-  background: rgba(11,11,13,.8);
-  backdrop-filter: blur(12px);
+  background: #0b0b0d;
   border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
@@ -97,7 +96,7 @@ h1 { font-size: clamp(40px, 7vw, 68px); margin: 20px 0 18px; }
 .logo3d .face { position: absolute; inset: 0; border-radius: 44px; transform: translateZ(14px); backface-visibility: hidden; box-shadow: 0 0 60px rgba(31,174,106,.35); }
 .logo3d .back { position: absolute; width: 420px; height: 260px; left: calc(50% - 210px); top: calc(50% - 130px); border-radius: 12px; border: 1px solid rgba(125,255,196,.45); transform: translateZ(-15px) rotateY(180deg); backface-visibility: hidden; box-shadow: 0 0 60px rgba(31,174,106,.35); }
 .logo3d .layer { position: absolute; inset: 0; border-radius: 44px; background: #062a19; border: 1px solid rgba(125,255,196,.35); transform: translateZ(var(--z)); }
-.floor { position: absolute; bottom: 4%; width: 60%; height: 18px; border-radius: 50%; background: radial-gradient(rgba(31,174,106,.55), transparent 70%); filter: blur(6px); animation: shadow 9s ease-in-out infinite; }
+.floor { position: absolute; bottom: 4%; width: 60%; height: 18px; border-radius: 50%; background: radial-gradient(rgba(31,174,106,.55), transparent 70%); animation: shadow 9s ease-in-out infinite; }
 @keyframes turn {
   0% { transform: rotateY(-18deg) rotateX(6deg) translateY(0); }
   32% { transform: rotateY(18deg) rotateX(-4deg) translateY(-12px); }
