@@ -172,7 +172,8 @@ setInterval(() => {
   }
 })();
 
-// hero logo: a thick 3D block that turns on its own and tilts toward the mouse
+// hero: a thick 3D block, logo on the front and the app window on the back;
+// it flips between them on its own and tilts toward the mouse
 (() => {
   const box = $("logo3d");
   const spin = el("div", "spin");
@@ -181,7 +182,10 @@ setInterval(() => {
     l.style.setProperty("--z", z + "px");
     spin.append(l);
   }
-  spin.append(el("div", "back"), box.querySelector(".face"));
+  const ui = el("img", "back");
+  ui.src = "img/app.jpg";
+  ui.alt = "";
+  spin.append(ui, box.querySelector(".face"));
   box.append(spin);
   addEventListener("pointermove", (e) => {
     const x = e.clientX / innerWidth - 0.5;
