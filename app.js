@@ -171,3 +171,22 @@ setInterval(() => {
     // offline or rate-limited: keep the placeholders
   }
 })();
+
+// hero logo: a thick 3D block that turns on its own and tilts toward the mouse
+(() => {
+  const box = $("logo3d");
+  const spin = el("div", "spin");
+  for (let z = -13; z <= 13; z += 2) {
+    const l = el("div", "layer");
+    l.style.setProperty("--z", z + "px");
+    spin.append(l);
+  }
+  spin.append(el("div", "back"), box.querySelector(".face"));
+  box.append(spin);
+  addEventListener("pointermove", (e) => {
+    const x = e.clientX / innerWidth - 0.5;
+    const y = e.clientY / innerHeight - 0.5;
+    box.style.setProperty("--ry", -x * 30 + "deg");
+    box.style.setProperty("--rx", y * 20 + "deg");
+  });
+})();

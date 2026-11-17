@@ -85,7 +85,24 @@ h1 { font-size: clamp(40px, 7vw, 68px); margin: 20px 0 18px; }
 .fine { color: var(--muted); font-size: 14px; margin-top: 14px; }
 
 .hero-art { position: relative; display: grid; place-items: center; aspect-ratio: 1; }
-.hero-art img { position: relative; border-radius: 44px; filter: drop-shadow(0 0 40px rgba(31,174,106,.45)); animation: float 6s ease-in-out infinite; }
+.hero-art { perspective: 900px; }
+/* 3D block: the logo face plus stacked layers behind it for thickness */
+.logo3d {
+  position: relative; width: 220px; height: 220px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .25s ease-out;
+}
+.logo3d .spin { position: absolute; inset: 0; transform-style: preserve-3d; animation: turn 9s ease-in-out infinite; }
+.logo3d .face { position: absolute; inset: 0; border-radius: 44px; transform: translateZ(14px); box-shadow: 0 0 60px rgba(31,174,106,.35); }
+.logo3d .back { position: absolute; inset: 0; border-radius: 44px; background: #04120b; border: 2px solid var(--accent); transform: translateZ(-14px) rotateY(180deg); box-shadow: 0 0 40px rgba(31,174,106,.4) inset; }
+.logo3d .layer { position: absolute; inset: 0; border-radius: 44px; background: #062a19; border: 1px solid rgba(125,255,196,.35); transform: translateZ(var(--z)); }
+.floor { position: absolute; bottom: 4%; width: 60%; height: 18px; border-radius: 50%; background: radial-gradient(rgba(31,174,106,.55), transparent 70%); filter: blur(6px); animation: shadow 9s ease-in-out infinite; }
+@keyframes turn {
+  0%, 100% { transform: rotateY(-28deg) rotateX(8deg) translateY(0); }
+  50% { transform: rotateY(28deg) rotateX(-6deg) translateY(-14px); }
+}
+@keyframes shadow { 50% { transform: scaleX(.8); opacity: .6; } }
 .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(125,255,196,.18); }
 .r1 { inset: 12%; animation: spin 18s linear infinite; border-top-color: var(--neon); }
 .r2 { inset: 3%; animation: spin 28s linear infinite reverse; border-bottom-color: rgba(31,174,106,.7); }
